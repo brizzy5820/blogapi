@@ -18,7 +18,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.urlencoded({extended:true}));
 const port = process.env.PORT || 5500;
-const host = '127.0.0.1';
+const host = process.env.HOST || '0.0.0.0';
+
 //  ROutes
 app.use("/api/products",productRoutes);
 app.use("/api/auth", userRoute);
