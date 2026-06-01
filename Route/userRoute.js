@@ -1,0 +1,10 @@
+const express= require('express')
+const {protect,} = require('../src/MIddleware/authMiddleware')
+const {ar} = require ('../src/MIddleware/roleBaseMIddleware')
+const {   registerUser, loginUser, getUser, deleteUser} = require ('../Controllers/userController')
+const router = express.Router()
+router.post('/register', registerUser)
+router.post('/signin', loginUser)
+router.delete('/:id', protect, ar('admin'), deleteUser)
+router.get('/profile', protect, getUser)
+module.exports = router
